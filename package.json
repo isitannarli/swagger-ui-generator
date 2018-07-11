@@ -1,5 +1,5 @@
 {
-  "name": "swagger-ui-generater",
+  "name": "swagger-ui-generator",
   "version": "1.0.0",
   "description": "Swagger UI generator for express.js",
   "main": "app.js",
