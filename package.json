@@ -1,15 +1,11 @@
 {
   "name": "swagger-ui-generator",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Swagger UI generator for express.js",
-  "main": "app.js",
+  "main": "index.js",
   "author": "Ahmet Işıtan Narlı <ahmetisitannarli@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "express": "^4.16.3",
-    "pug": "^2.0.3"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/isitannarli/swagger-ui-generator"
@@ -19,5 +15,11 @@
     "swagger ui",
     "swagger ui generator",
     "express"
-  ]
+  ],
+  "scripts": {},
+  "dependencies": {
+    "express": "^4.16.3",
+    "swagger-ui-dist": "^3.17.3"
+  },
+  "devDependencies": {}
 }

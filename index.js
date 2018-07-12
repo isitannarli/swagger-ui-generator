@@ -1,35 +1,27 @@
 const express = require('express');
 const path = require('path');
-const pug = require('pug');
+const fs = require('fs');
 
-module.exports = function swaggerUi(router, swaggerUrl = 'https://petstore.swagger.io/v2/swagger.json') {
+const swaggerUiAssetPath = require("swagger-ui-dist").getAbsoluteFSPath();
 
-    const swaggerInstans = `window.onload = function() {
-            const ui = SwaggerUIBundle({
-                url: '${swaggerUrl}',
-                dom_id: '#swagger-ui',
-                deepLinking: true,
-                presets: [
-                    SwaggerUIBundle.presets.apis,
-                    SwaggerUIStandalonePreset
-                ],
-                plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
-                ],
-                layout: 'StandaloneLayout'
-            })
-            window.ui = ui
-        }`;
+module.exports = function swaggerUi (router, swaggerUrl = 'https://petstore.swagger.io/v2/swagger.json') {
 
-    const html = pug.renderFile(__dirname + '/template.pug', {
-        swaggerInstans: swaggerInstans
-    });
+  let html = fs
+    .readFileSync(swaggerUiAssetPath + '/index.html', 'utf8')
+    .replace("https://petstore.swagger.io/v2/swagger.json", swaggerUrl);
 
-    router.use(express.static(path.resolve(__dirname, 'static')));
+  let assetsFullPath = path.resolve(__dirname, swaggerUiAssetPath);
+  let staticOptions = {
+    dotfiles: "ignore",
+    index: false,
+    extensions: ['png', 'js', 'css', 'map']
+  };
 
-    const middleware = function (req, res, next) {
-        res.send(html)
-    };
+  router.use(express.static(assetsFullPath, staticOptions));
 
-    return middleware;
+  const middleware = function (req, res, next) {
+    res.send(html)
+  };
+
+  return middleware;
 };

@@ -1,4 +1,4 @@
-### Swagger UI Generator
+### Swagger UI Generator for Express
 
 #### Installation
 
