@@ -1,6 +1,6 @@
 {
   "name": "swagger-ui-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Swagger UI generator for express.js",
   "main": "index.js",
   "author": "Ahmet Işıtan Narlı <ahmetisitannarli@gmail.com>",
